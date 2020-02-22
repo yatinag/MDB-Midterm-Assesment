@@ -38,6 +38,15 @@ public class UploadActivity extends AppCompatActivity {
             }
         });
 
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent getBack  = new Intent(UploadActivity.this, MainActivity.class);
+                getBack.putExtra("pic_path", picturePath);
+                getBack.putExtra("pic_caption", userCaption.getText());
+                startActivity(getBack);
+            }
+        });
     }
 
 
@@ -57,10 +66,6 @@ public class UploadActivity extends AppCompatActivity {
             picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            Intent getBack  = new Intent(UploadActivity.this, MainActivity.class);
-            getBack.putExtra("pic_path", picturePath);
-            getBack.putExtra("pic_caption", userCaption.getText());
-            startActivity(getBack);
         }
     }
 
